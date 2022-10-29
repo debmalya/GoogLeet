@@ -2,33 +2,11 @@ package googleet.process;
 
 public class LicenseKeyFormatting {
 	public String licenseKeyFormatting(String s, int k) {
-		String part = "";
-		String reformatted = "";
-
-		for (int index = s.length() - 1; index > -1; index--) {
-			char c = s.charAt(index);
-			if (c != '-') {
-				if (part.length() < k) {
-					part = c + part;
-				} else {
-					if (reformatted.length() > 0) {
-						reformatted = "-" + reformatted;
-					}
-					reformatted = part + reformatted;
-					part = c + "";
-				}
-			}
-		}
-
-		if (part.length() > 0) {
-			if (reformatted.length() > 0) {
-				reformatted = "-" + reformatted;
-			}
-			reformatted = part + reformatted;
-		}
-
-		return reformatted.toUpperCase();
-
+		StringBuilder sb = new StringBuilder();
+		for (int i = s.length() - 1; i >= 0; i--)
+			if (s.charAt(i) != '-')
+				sb.append(sb.length() % (k + 1) == k ? '-' : "").append(s.charAt(i));
+		return sb.reverse().toString().toUpperCase();
 	}
 
 }
