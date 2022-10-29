@@ -17,6 +17,7 @@ class FruitIntoBasketsTest {
 		assertEquals(3, fruitIntoBaskets.totalFruit(new int[] { 1, 2, 3, 4, 4 }));
 		assertEquals(3, fruitIntoBaskets.totalFruit(new int[] { 1, 4, 3, 2, 2 }));
 		assertEquals(4, fruitIntoBaskets.totalFruit(new int[] { 1, 2, 3, 2, 2 }));
+		assertEquals(5, fruitIntoBaskets.totalFruit(new int[] { 3, 3, 3, 1, 2, 1, 1, 2, 3, 3, 4 }));
 	}
 
 }
