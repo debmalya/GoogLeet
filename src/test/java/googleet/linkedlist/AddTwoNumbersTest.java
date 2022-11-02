@@ -8,7 +8,7 @@ class AddTwoNumbersTest {
 
 	@Test
 	void testAddTwoNumbers() {
-		fail("Not yet implemented");
+		
 	}
 
 }
