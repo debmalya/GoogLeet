@@ -51,6 +51,9 @@ public class AddTwoNumbers {
 			System.out.println("currentSum = " + currentSum);
 			currentSum = carry;
 		}
+		if (carry > 0) {
+			result.push(carry);
+		}
 		System.out.println("final total sum = " + result);
 		Stack<Integer> finalResult = new Stack<>();
 		while (!result.isEmpty()) {
