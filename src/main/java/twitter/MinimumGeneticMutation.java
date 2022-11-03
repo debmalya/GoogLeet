@@ -1,66 +1,54 @@
 package twitter;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Set;
 
 public class MinimumGeneticMutation {
 	public int minMutation(String start, String end, String[] bank) {
-		int diffCount = 0;
-		Arrays.sort(bank);
-		char[] first = start.toCharArray();
-		List<Integer> positions = new ArrayList<>();
-		List<String> intermittentStrings = new ArrayList<>();
+		int level = 0;
+		char[] chr = { 'A', 'C', 'G', 'T' };
 
-		for (int i = 0; i < start.length(); i++) {
-			char c = end.charAt(i);
-			if (start.charAt(i) != c) {
-				first[i] = c;
-				if (Arrays.binarySearch(bank, String.valueOf(first)) < 0) {
-					if (!checkIntermittentStrings(intermittentStrings, bank, i, c)) {
-						positions.add(i);
-						first[i] = start.charAt(i);
+		Set<String> hset = new HashSet<String>();
+		for (String s : bank) {
+			hset.add(s);
+		}
+
+		Queue<String> queue = new LinkedList<>();
+		queue.add(start);
+
+		while (true) {
+			level++;
+			int n = queue.size();
+
+			if (n == 0) {
+				return -1;
+			}
+
+			for (int i = 0; i < n; i++) {
+				char[] ch = queue.poll().toCharArray();
+
+				for (int j = 0; j < 8; j++) {
+					char org_char = ch[j];
+					for (int c = 0; c < 4; c++) {
+						ch[j] = chr[c];
+						String str = String.valueOf(ch);
+						if (str.equals(end) && hset.contains(str)) {
+							return level;
+						}
+
+						if (!hset.contains(str)) {
+							continue;
+						}
+
+						hset.remove(str);
+						queue.add(str);
 					}
-				} else {
-					intermittentStrings.add(String.valueOf(first));
+					ch[j] = org_char;
 				}
-				diffCount++;
-			}
-
-		}
-
-		boolean[] found = new boolean[positions.size()];
-		for (int j = 0; j < positions.size(); j++) {
-			if (checkIntermittentStrings(intermittentStrings, bank, positions.get(j), end.charAt(j))) {
-				found[j] = true;
 			}
 		}
-		
-		for (int j = found.length - 1; j > -1; j--) {
-			if (found[j]) {
-				positions.remove(j);
-			}
-		}
-
-		System.out.println(intermittentStrings);
-
-		if (Arrays.binarySearch(bank, end) > -1 && positions.isEmpty()) {
-			return diffCount;
-		}
-		return -1;
-
-	}
-
-	private boolean checkIntermittentStrings(List<String> intermittentStrings, String[] bank, int i, char c) {
-		for (int j = 0; j < intermittentStrings.size(); j++) {
-			char[] searchString = intermittentStrings.get(j).toCharArray();
-			searchString[i] = c;
-			if (Arrays.binarySearch(bank, String.valueOf(searchString)) > -1) {
-				intermittentStrings.add(String.valueOf(searchString));
-				return true;
-			}
-		}
-		return false;
 	}
 
 }
