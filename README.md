@@ -8,6 +8,9 @@ Love for algorithm
 * [Odd Even Jump](src/main/java/googleet/process/OddEvenJump.java)
 * [Toeplitz Matrix](src/main/java/googleet/process/ToeplitzMatrix.java)
 
+### Linked List
+* [Remove nth element from last](src/main/java/googleet/linkedlist/RemoveNthNodeFromEnd.java)
+
 ### Hard
 * [Shortest path in a grid with obstacle elimination](src/main/java/googleet/hard/ShortestPathInAGridWithObstacleElimination.java)
 
