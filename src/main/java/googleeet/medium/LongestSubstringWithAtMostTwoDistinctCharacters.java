@@ -22,7 +22,6 @@ public class LongestSubstringWithAtMostTwoDistinctCharacters {
 			
 			if (matchingCriteria(ss)) {
 				max = Math.max(max, end - start);
-				System.out.println(ss);
 			} else {
 				start++;
 			}

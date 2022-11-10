@@ -8,6 +8,9 @@ Love for algorithm
 * [Odd Even Jump](src/main/java/googleet/process/OddEvenJump.java)
 * [Toeplitz Matrix](src/main/java/googleet/process/ToeplitzMatrix.java)
 
+### Arrays & String
+* [Longest Substring With At Most Two Distinct Characters](src/main/java/googleeet/medium/LongestSubstringWithAtMostTwoDistinctCharacters.java)
+
 ### Linked List
 * [Remove nth element from last](src/main/java/googleet/linkedlist/RemoveNthNodeFromEnd.java)
 
