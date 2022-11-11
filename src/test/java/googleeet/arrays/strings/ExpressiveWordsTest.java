@@ -11,6 +11,7 @@ class ExpressiveWordsTest {
 	@Test
 	void testExpressiveWords() {
 		assertEquals(1, expressiveWords.expressiveWords("hellooo", new String[] { "hello", "hi", "helo" }));
+		assertEquals(3, expressiveWords.expressiveWords("zzzzzyyyyy", new String[] { "zzyy", "zy", "zyy" }));
 	}
 
 }

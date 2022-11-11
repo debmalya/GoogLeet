@@ -10,6 +10,7 @@ Love for algorithm
 
 ### Arrays & String
 * [Longest Substring With At Most Two Distinct Characters](src/main/java/googleeet/medium/LongestSubstringWithAtMostTwoDistinctCharacters.java)
+* [Expressive words](src\main\java\googleeet\arrays\strings\ExpressiveWords.java)
 
 ### Linked List
 * [Remove nth element from last](src/main/java/googleet/linkedlist/RemoveNthNodeFromEnd.java)
