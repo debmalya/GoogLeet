@@ -10,7 +10,7 @@ class SortCharactersByFrequencyTest {
 
 	@Test
 	void testFrequencySort() {
-		assertEquals("eert", sortCharactersByFrequency.frequencySort("tree"));
+		assertEquals("eetr", sortCharactersByFrequency.frequencySort("tree"));
 	}
 
 }

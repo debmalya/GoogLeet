@@ -19,6 +19,12 @@ class MaximumProfitTest {
 	}
 
 	@Test
+	void getMaxProfit() {
+		assertEquals(3, maximumProfit.maxProfit(new int[] { 1, 2, 3, 0, 2 }));
+		assertEquals(0, maximumProfit.maxProfit(new int[] { 1 }));
+	}
+
+	@Test
 	void testMerge() {
 //		Input [ 3, 4, 6, 8, 10], [1,2,4,5,9], Output [10,9,8,6,5,4,4,3,2,1]
 		int[] arr1 = new int[] { 3, 4, 6, 8, 10 };
