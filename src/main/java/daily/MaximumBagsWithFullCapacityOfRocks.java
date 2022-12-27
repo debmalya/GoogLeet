@@ -1,29 +1,32 @@
 package daily;
 
-public class MaximumBagsWithFullCapacityOfRocks {
-	public int maximumBags(int[] capacity, int[] rocks, int additionalRocks) {
-		int max = 0;
+import java.util.Arrays;
 
-		// can distribute additionalRocks?
-		int index = 0;
-		while (additionalRocks > 0 && index < rocks.length) {
-			if (additionalRocks >= capacity[index] - rocks[index]) {
-				additionalRocks -= (capacity[index] - rocks[index]);
-				rocks[index] = capacity[index];
-			} else {
-				rocks[index] += additionalRocks;
-				additionalRocks = 0;
-			}
-//			System.out.println("Additonal rocks " + additionalRocks);
-			index++;
-		}
-//		System.out.println(Arrays.toString(rocks));
-		// check how many bags has maxium capacity
-		for (int i = 0; i < capacity.length; i++) {
-			if (rocks[i] == capacity[i]) {
-				max++;
-			}
-		}
-		return max;
-	}
+public class MaximumBagsWithFullCapacityOfRocks {
+	
+	    public int maximumBags(int[] capacity, int[] rocks, int additionalRocks) {
+	        int n = capacity.length, fullBags = 0;
+	        
+	        // Sort bags by the remaining capacity.
+	        int[] remainingCapacity = new int[n];
+	        for (int i = 0; i < n; ++i)
+	            remainingCapacity[i] = capacity[i] - rocks[i];
+	        Arrays.sort(remainingCapacity);
+	    
+	        // Iterate over sorted bags and fill them using additional rocks.
+	        for (int i = 0; i < n; ++i) {
+	            // If we can fill the current one, fill it and move on.
+	            // Otherwise, stop the iteration.
+	            if (additionalRocks >= remainingCapacity[i]) {
+	                additionalRocks -= remainingCapacity[i];
+	                fullBags++;
+	            }
+	            else
+	                break;
+	        }
+	        
+	        // Return `fullBags` after the iteration stops.
+	        return fullBags;
+	    }
+	
 }

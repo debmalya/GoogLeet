@@ -16,4 +16,9 @@ class MaximumBagsWithFullCapacityOfRocksTest {
 				maximumBagsWithFullCapacityOfRocks.maximumBags(new int[] { 10, 2, 2 }, new int[] { 2, 2, 0 }, 100));
 	}
 
+	@Test
+	void specialCases() {
+		assertEquals(1, maximumBagsWithFullCapacityOfRocks.maximumBags(new int[] { 91, 54, 63, 99, 24, 45, 78 },
+				new int[] { 35, 32, 45, 98, 6, 1, 25 }, 17));
+	}
 }
