@@ -23,8 +23,8 @@ Love for algorithm
 [Varun Upadhay](https://github.com/varunu28)
 
 #### Important repositories
-[Leetcode](https://github.com/varunu28/LeetCode-Java-Solutions)
-[CodeSignal solutions](https://github.com/AntDuPar/Codesignal-Leetcode-Questions)
+* [Leetcode](https://github.com/varunu28/LeetCode-Java-Solutions)
+* [CodeSignal solutions](https://github.com/AntDuPar/Codesignal-Leetcode-Questions)
 
 #### Important videos
 [Leetcode solutions](https://www.youtube.com/watch?v=s_zu2dOkq80)

@@ -18,8 +18,7 @@ public class ClimbingStaircase {
 	int[][] solution(int n, int k) {
 		ArrayList<ArrayList<Integer>> answer = new ArrayList<>();
 		makeList(n, k, answer, new ArrayList<Integer>());
-		int[][] returnAnsw = answer.stream().map(u -> u.stream().mapToInt(i -> i).toArray()).toArray(int[][]::new);
-		return returnAnsw;
+		return answer.stream().map(u -> u.stream().mapToInt(i -> i).toArray()).toArray(int[][]::new);
 	}
 
 	void makeList(int n, int k, ArrayList<ArrayList<Integer>> answer, ArrayList<Integer> steps) {
