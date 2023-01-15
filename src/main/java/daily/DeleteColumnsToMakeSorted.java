@@ -1,7 +1,5 @@
 package daily;
 
-import java.util.Arrays;
-
 public class DeleteColumnsToMakeSorted {
 	/**
 	 * The strings can be arranged such that there is one on each line, making a

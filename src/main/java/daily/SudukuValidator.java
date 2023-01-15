@@ -12,8 +12,11 @@ public class SudukuValidator {
 		int N = 9;
 
 		// Use hash set to record the status
+		@SuppressWarnings("unchecked")
 		HashSet<Character>[] rows = new HashSet[N];
+		@SuppressWarnings("unchecked")
 		HashSet<Character>[] cols = new HashSet[N];
+		@SuppressWarnings("unchecked")
 		HashSet<Character>[] boxes = new HashSet[N];
 		for (int r = 0; r < N; r++) {
 			rows[r] = new HashSet<Character>();

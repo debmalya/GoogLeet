@@ -34,6 +34,7 @@ public class ArithmeticSlices {
 	public int numberOfArithmeticSlices(int[] A) {
 		int n = A.length;
 		long ans = 0;
+		@SuppressWarnings("unchecked")
 		Map<Integer, Integer>[] cnt = new Map[n];
 		for (int i = 0; i < n; i++) {
 			cnt[i] = new HashMap<>(i);
