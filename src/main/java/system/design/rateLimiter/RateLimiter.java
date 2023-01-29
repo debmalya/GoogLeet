@@ -20,12 +20,12 @@ public class RateLimiter {
 		if (requestQueue.isEmpty()) {
 			requestQueue.add(timestamp);
 		} else {
-			while (!requestQueue.isEmpty() && timestamp - requestQueue.peek()> timeWindow) {
+			while (!requestQueue.isEmpty() && timestamp - requestQueue.peek() >= timeWindow) {
 				requestQueue.poll();
 			}
 			if (requestQueue.size() < noOfRequests) {
 				ableToHandle = requestQueue.offer(timestamp);
-			}else {
+			} else {
 				ableToHandle = false;
 			}
 		}
