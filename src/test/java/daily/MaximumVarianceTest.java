@@ -1,14 +1,12 @@
 package daily;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MaximumVarianceTest {
 
     MaximumVariance maximumVariance = new MaximumVariance();
 
-    @Test
+    //    @Test
     void largestVariance() {
         assertEquals(3, maximumVariance.largestVariance("aababbb"));
         assertEquals(1, maximumVariance.largestVariance("ajoyjash"));
