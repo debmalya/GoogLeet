@@ -9,7 +9,7 @@ class PascalsTriangleTest {
 
     @Test
     void generateFirstRow() {
-        var result = pascalsTriangle.generate(1);
+        var result = pascalsTriangle.generate0(1);
         assertAll(() -> assertNotNull(result),
                 () -> assertEquals(1, result.size()),
                 () -> assertEquals(1, result.get(0).size()),
@@ -18,7 +18,7 @@ class PascalsTriangleTest {
 
     @Test
     void generateSecondRow() {
-        var result = pascalsTriangle.generate(2);
+        var result = pascalsTriangle.generate0(2);
         assertAll(() -> assertNotNull(result),
                 () -> assertEquals(2, result.size()),
                 () -> assertEquals(1, result.get(0).size()),
@@ -26,6 +26,22 @@ class PascalsTriangleTest {
                 () -> assertEquals(2, result.get(1).size()),
                 () -> assertEquals(1, result.get(1).get(0).intValue()),
                 () -> assertEquals(1, result.get(1).get(1).intValue()));
+    }
+
+    @Test
+    void generateThirdRow0() {
+        var result = pascalsTriangle.generate0(3);
+        assertAll(() -> assertNotNull(result),
+                () -> assertEquals(3, result.size()),
+                () -> assertEquals(1, result.get(0).size()),
+                () -> assertEquals(1, result.get(0).get(0).intValue()),
+                () -> assertEquals(2, result.get(1).size()),
+                () -> assertEquals(1, result.get(1).get(0).intValue()),
+                () -> assertEquals(1, result.get(1).get(1).intValue()),
+                () -> assertEquals(3, result.get(2).size()),
+                () -> assertEquals(1, result.get(2).get(0).intValue()),
+                () -> assertEquals(2, result.get(2).get(1).intValue()),
+                () -> assertEquals(1, result.get(2).get(2).intValue()));
     }
 
     @Test
