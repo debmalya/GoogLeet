@@ -1,9 +1,8 @@
 package daily.medium;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 public class MajorityElementII {
     /**
@@ -15,16 +14,25 @@ public class MajorityElementII {
     public List<Integer> majorityElement(int[] nums) {
         List<Integer> majorityList = new ArrayList<>();
         int majority = nums.length / 3;
-        Map<Integer, Integer> frequencyCount = new HashMap<>(nums.length);
-        for (int each : nums) {
-            Integer count = frequencyCount.getOrDefault(each, 0);
-            count++;
-            frequencyCount.put(each, count);
-            if (count > majority) {
-                if (!majorityList.contains(each)) {
-                    majorityList.add(each);
+        Arrays.sort(nums);
+        int count = 0;
+        int prev = 0;
+        for (int index = 0; index < nums.length; index++) {
+            if (index == 0) {
+                count++;
+            } else {
+                if (prev == nums[index]) {
+                    count++;
+
+                } else {
+                    count = 1;
                 }
             }
+            if (count == majority + 1) {
+                majorityList.add(nums[index]);
+            }
+
+            prev = nums[index];
         }
         return majorityList;
     }
