@@ -1,5 +1,7 @@
 package hard;
 
+import java.util.Arrays;
+
 public class MaxDotProductOfTwoSubsequences {
     /**
      * Given two arrays nums1 and nums2.
