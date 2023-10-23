@@ -14,6 +14,21 @@ public class ReachingPoints {
      * @return true if it is possible to convert the point (sx, sy) to the point (tx, ty).
      */
     public boolean reachingPoints(int sx, int sy, int tx, int ty) {
+        while (sx < tx && sy < ty) {
+            if (tx > ty) {
+                tx = tx % ty;
+            } else {
+                ty = ty % tx;
+            }
+        }
+        if (sx == tx && sy <= ty) {
+            return (ty - sy) % tx == 0;
+        } else {
+            return sy == ty && sx <= tx && (tx - sx) % ty == 0;
+        }
+    }
+
+    public boolean reachingPoints0(int sx, int sy, int tx, int ty) {
         while (sx <= tx && sy <= ty) {
             if (sx == tx && sy == ty) {
                 return true;
