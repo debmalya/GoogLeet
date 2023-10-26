@@ -1,7 +1,5 @@
 package daily.medium;
 
-import java.math.BigInteger;
-
 public class KthSymbolInGrammar {
     /**
      * We build a table of n rows (1-indexed). We start by writing 0 in the 1st row.
@@ -16,10 +14,10 @@ public class KthSymbolInGrammar {
      * @return return the kth (1-indexed) symbol in the nth row of a table of n rows.
      */
     public int kthGrammar(int n, int k) {
-        int a = 0;
-        BigInteger b = BigInteger.ZERO;
-        b.negate();
-        return a;
+        if (n == 1) return 0;
+        int length = 1 << (n - 2);
+        if (k <= length) return kthGrammar(n - 1, k);
+        else return 1 - kthGrammar(n - 1, k - length);
     }
 
     public int kthGrammar1(int n, int k) {

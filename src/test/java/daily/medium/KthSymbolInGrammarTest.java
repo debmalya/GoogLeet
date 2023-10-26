@@ -8,6 +8,18 @@ class KthSymbolInGrammarTest {
     KthSymbolInGrammar kthSymbolInGrammar = new KthSymbolInGrammar();
 
     @Test
+    void kthGrammar() {
+        assertEquals(0, kthSymbolInGrammar.kthGrammar(1, 1));
+        assertEquals(0, kthSymbolInGrammar.kthGrammar(2, 1));
+        assertEquals(1, kthSymbolInGrammar.kthGrammar(2, 2));
+    }
+
+    @Test
+    void kthGrammarReal1() {
+        assertEquals(0, kthSymbolInGrammar.kthGrammar(30, 1000));
+    }
+
+    @Test
     void kthGrammar0() {
         assertEquals(0, kthSymbolInGrammar.kthGrammar0(1, 1));
         assertEquals(0, kthSymbolInGrammar.kthGrammar0(2, 1));
