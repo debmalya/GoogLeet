@@ -16,14 +16,13 @@ public class FindWords {
         }
         for (String word : words) {
             boolean matches = true;
-            int[] copiedValues = new int[26];
-            System.arraycopy(values, 0, copiedValues, 0, 26);
+            int[] wordValues = new int[26];
             for (int index = 0; index < word.length(); index++) {
-                if (copiedValues[word.charAt(index) - 'a'] == 0) {
+                int charIndex = word.charAt(index) - 'a';
+                wordValues[charIndex]++;
+                if (wordValues[charIndex] > values[charIndex]) {
                     matches = false;
                     break;
-                } else {
-                    copiedValues[word.charAt(index) - 'a']--;
                 }
             }
             if (matches) {
