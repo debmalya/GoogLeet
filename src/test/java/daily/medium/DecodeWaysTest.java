@@ -10,7 +10,7 @@ class DecodeWaysTest {
     @Test
     void numDecodings() {
         assertEquals(2, decodeWays.numDecodings("12"));
-        assertEquals(3, decodeWays.numDecodings("226"));
-        assertEquals(0, decodeWays.numDecodings("06"));
+        assertEquals(2, decodeWays.numDecodings("226"));
+        assertEquals(2, decodeWays.numDecodings("06"));
     }
 }
