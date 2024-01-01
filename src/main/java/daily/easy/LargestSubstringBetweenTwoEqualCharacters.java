@@ -1,7 +1,5 @@
 package daily.easy;
 
-import java.util.Arrays;
-
 public class LargestSubstringBetweenTwoEqualCharacters {
     /**
      * Given a string s, return the length of the longest substring between two equal characters, excluding the two characters.
@@ -17,13 +15,17 @@ public class LargestSubstringBetweenTwoEqualCharacters {
     public int maxLengthBetweenEqualCharacters(String s) {
         int maxLength = -1;
         int[] frequency = new int[26];
-        Arrays.fill(frequency, -1);
+
         for (int index = 0; index < s.length(); index++) {
             int i = (s.charAt(index) - 'a');
-            if (frequency[i] != -1) {
-                maxLength = Math.max(maxLength, index - frequency[i] - 1);
+            if (frequency[i] != 0) {
+                maxLength = Math.max(maxLength, index - frequency[i]);
+
             }
-            frequency[i] = index;
+            if (frequency[i] == 0) {
+                frequency[i] = index + 1;
+            }
+
         }
         return maxLength;
     }
