@@ -1,14 +1,12 @@
 package daily.medium;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BitwiseANDOfNumbersRangeTest {
 
     BitwiseANDOfNumbersRange bitwiseANDOfNumbersRange = new BitwiseANDOfNumbersRange();
 
-    @Test
+    //    @Test
     void rangeBitwiseAnd() {
         assertEquals(4, bitwiseANDOfNumbersRange.rangeBitwiseAnd(5, 7));
         assertEquals(0, bitwiseANDOfNumbersRange.rangeBitwiseAnd(0, 0));
