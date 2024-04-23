@@ -26,12 +26,15 @@ public class FindAllGroupsOfFarmland {
         stack.push(new int[]{x, y});
         visited.add(x + "," + y);
 
-        int minRow = x, minCol = y;
-        int maxRow = x, maxCol = y;
+        int minRow = x;
+        int minCol = y;
+        int maxRow = x;
+        int maxCol = y;
 
         while (!stack.isEmpty()) {
             int[] current = stack.pop();
-            int curX = current[0], curY = current[1];
+            int curX = current[0];
+            int curY = current[1];
 
             int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
             for (int[] dir : directions) {
