@@ -11,7 +11,7 @@ class FindAllGroupsOfFarmlandTest {
 
     @Test
     void findFarmLand() {
-        var lands = findAllGroupsOfFarmland.findFarmLand(new int[][]{{1, 0, 0}, {0, 1, 1}, {0, 1, 1}});
+        var lands = findAllGroupsOfFarmland.findFarmland(new int[][]{{1, 0, 0}, {0, 1, 1}, {0, 1, 1}});
 
         assertNotNull(lands);
         assertEquals(0, lands[0][0]);
@@ -23,7 +23,7 @@ class FindAllGroupsOfFarmlandTest {
         assertEquals(2, lands[1][2]);
         assertEquals(2, lands[1][3]);
 
-        lands = findAllGroupsOfFarmland.findFarmLand(new int[][]{{1, 1}, {1, 1}});
+        lands = findAllGroupsOfFarmland.findFarmland(new int[][]{{1, 1}, {1, 1}});
 
         assertNotNull(lands);
         assertEquals(0, lands[0][0]);
