@@ -1,41 +1,30 @@
 package daily.easy;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class RelativeSortArray {
+
+  private int rank(HashMap<Integer, Integer> map, int a) {
+    return map.containsKey(a) ? map.get(a) : map.size();
+  }
+
   public int[] relativeSortArray(int[] arr1, int[] arr2) {
-    int[] result = new int[arr1.length];
-
-    LinkedHashMap<Integer, Integer> frequency = new LinkedHashMap<>();
-    for (int num : arr1) {
-      var count = frequency.getOrDefault(num, 0);
-      count++;
-      frequency.put(num, count);
+    HashMap<Integer, Integer> map = new HashMap<>();
+    for (int i = 0; i < arr2.length; i++) {
+      map.put(arr2[i], i);
     }
 
-    var resultIndex = 0;
-    for (var num : arr2) {
-      var count = frequency.get(num);
-      while (count > 0) {
-        result[resultIndex++] = num;
-        count--;
-      }
-      frequency.remove(num);
-    }
+    List<Integer> arr1List = Arrays.stream(arr1).boxed().collect(Collectors.toList());
+    arr1List.sort(
+        new Comparator<Integer>() {
+          public int compare(Integer a, Integer b) {
+            int rankA = rank(map, a);
+            int rankB = rank(map, b);
+            return rankA == rankB ? a.compareTo(b) : Integer.compare(rankA, rankB);
+          }
+        });
 
-    var keys = frequency.keySet().toArray();
-    Arrays.sort(keys);
-    var iterator = Arrays.stream(keys).iterator();
-
-    while (iterator.hasNext()) {
-      Integer key = (Integer) iterator.next();
-      var count = frequency.get(key);
-      while (count > 0) {
-        result[resultIndex++] = key;
-        count--;
-      }
-    }
-
-    return result;
+    return arr1List.stream().mapToInt(Integer::intValue).toArray();
   }
 }
