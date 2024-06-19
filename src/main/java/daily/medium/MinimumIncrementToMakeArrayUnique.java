@@ -15,17 +15,18 @@ public class MinimumIncrementToMakeArrayUnique {
    * @return the minimum number of moves to make every value in nums unique.
    */
   public int minIncrementForUnique(int[] nums) {
+    // Sort the array first
     Arrays.sort(nums);
-    int count = 0;
-    int prev = nums[0];
-    for (var index = 1; index < nums.length; index++) {
-      while (nums[index] <= prev) {
-        nums[index]++;
-        count++;
-      }
-      prev = nums[index];
+
+    int numTracker = 0; // Tracks the next unique number that should be set.
+    int minIncrement = 0; // Counts the total increments required.
+
+    for (int num : nums) {
+      numTracker = Math.max(numTracker, num);
+      minIncrement += numTracker - num;
+      numTracker += 1; // Increment the tracker for the next number.
     }
-    System.out.println(Arrays.toString(nums));
-    return count;
+
+    return minIncrement;
   }
 }
