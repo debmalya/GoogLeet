@@ -20,4 +20,15 @@ class SortArrayByIncreasingFrequencyTest {
         () -> assertEquals(2, sorted[4]),
         () -> assertEquals(2, sorted[5]));
   }
+
+  @Test
+  void frequencySort1() {
+    var sorted = SortArrayByIncreasingFrequency.frequencySort(new int[] {2, 3, 1, 3, 2});
+    assertAll(
+        () -> assertEquals(1, sorted[0]),
+        () -> assertEquals(3, sorted[1]),
+        () -> assertEquals(3, sorted[2]),
+        () -> assertEquals(2, sorted[3]),
+        () -> assertEquals(2, sorted[4]));
+  }
 }
