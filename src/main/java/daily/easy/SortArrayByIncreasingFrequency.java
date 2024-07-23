@@ -1,39 +1,43 @@
 package daily.easy;
 
-import java.util.*;
-
 public class SortArrayByIncreasingFrequency {
+
   public int[] frequencySort(int[] nums) {
-    Map<Integer, Integer> frequencyMap = new HashMap<>();
-
-    for (int num : nums) {
-      frequencyMap.put(num, frequencyMap.getOrDefault(num, 0) + 1);
+    int[] count = new int[202];
+    for (int i = 0; i < nums.length; i++) {
+      count[nums[i] + 100]++;
     }
-    TreeMap<Integer, List<Integer>> reverseFrequency = new TreeMap<>();
-    frequencyMap.forEach(
-        (key, value) -> {
-          var existingKeys = reverseFrequency.getOrDefault(value, new ArrayList<>());
-          existingKeys.add(key);
-          reverseFrequency.put(value, existingKeys);
-        });
+    quickSort(nums, count, 0, nums.length - 1);
+    return nums;
+  }
 
-    int[] sortedNums = new int[nums.length];
-    var entrySet = reverseFrequency.entrySet();
+  void quickSort(int[] nums, int[] freq, int low, int high) {
+    if (low < high) {
+      int pivot = partition(nums, freq, low, high);
+      quickSort(nums, freq, low, pivot - 1);
+      quickSort(nums, freq, pivot + 1, high);
+    }
+  }
 
-    var index = 0;
-    for (var each : entrySet) {
-      var count = each.getKey();
-      var items = each.getValue();
-      Collections.sort(items);
-      Collections.reverse(items);
-      for (var eachItem : items) {
-        var eachIndex = 0;
-        while (eachIndex < count) {
-          sortedNums[index++] = eachItem;
-          eachIndex++;
-        }
+  int partition(int[] nums, int[] freq, int low, int high) {
+    int pivot = freq[nums[high] + 100];
+    int i = low - 1;
+    for (int j = low; j < high; j++) {
+      if (pivot > freq[nums[j] + 100]) {
+        i++;
+        int temp = nums[j];
+        nums[j] = nums[i];
+        nums[i] = temp;
+      } else if (freq[nums[j] + 100] == pivot && nums[high] <= nums[j]) {
+        i++;
+        int temp = nums[j];
+        nums[j] = nums[i];
+        nums[i] = temp;
       }
     }
-    return sortedNums;
+    int temp = nums[i + 1];
+    nums[i + 1] = nums[high];
+    nums[high] = temp;
+    return i + 1;
   }
 }
