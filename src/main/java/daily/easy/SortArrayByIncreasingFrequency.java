@@ -25,6 +25,7 @@ public class SortArrayByIncreasingFrequency {
       var count = each.getKey();
       var items = each.getValue();
       Collections.sort(items);
+      Collections.reverse(items);
       for (var eachItem : items) {
         var eachIndex = 0;
         while (eachIndex < count) {
