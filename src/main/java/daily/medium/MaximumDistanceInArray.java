@@ -1,9 +1,20 @@
 package daily.medium;
 
-import java.util.Collections;
 import java.util.List;
 
 public class MaximumDistanceInArray {
+  /**
+   * You are given m arrays, where each array is sorted in ascending order.
+   *
+   * <p>You can pick up two integers from two different arrays (each array picks one) and calculate
+   * the distance. We define the distance between two integers a and b to be their absolute
+   * difference |a - b|.
+   *
+   * <p>Return the maximum distance.
+   *
+   * @param arrays m arrays, where each array is sorted in ascending order.
+   * @return the maximum distance.
+   */
   public int maxDistance(List<List<Integer>> arrays) {
     var max = Integer.MIN_VALUE;
     var min = Integer.MAX_VALUE;
@@ -13,7 +24,7 @@ public class MaximumDistanceInArray {
     var index = 0;
 
     for (List<Integer> array : arrays) {
-      Collections.sort(array);
+
       minMax[index][0] = array.getFirst();
       minMax[index][1] = array.getLast();
 
