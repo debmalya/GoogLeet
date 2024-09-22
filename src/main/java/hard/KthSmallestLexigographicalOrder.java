@@ -1,8 +1,6 @@
 package hard;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class KthSmallestLexigographicalOrder {
   public int findKthNumber(int n, int k) {
@@ -12,14 +10,27 @@ public class KthSmallestLexigographicalOrder {
 
   private List<Integer> lexicalOrder(int n) {
     List<Integer> result = new ArrayList<>();
-    String[] arr = new String[n];
-    for (var index = 1; index <= n; index++) {
-      arr[index - 1] = String.valueOf(index);
+    Map<Integer, List<Integer>> firstDigitNumMap = new HashMap<>();
+    for (var num = 1; num <= n; num++) {
+      var firstDigit = getFirstDigit(num);
+      var listOfNums = firstDigitNumMap.getOrDefault(firstDigit, new ArrayList<>());
+      listOfNums.add(num);
+      firstDigitNumMap.put(firstDigit, listOfNums);
     }
-    Arrays.sort(arr);
-    for (String e : arr) {
-      result.add(Integer.valueOf(e));
+    var keys = new ArrayList<>(firstDigitNumMap.keySet());
+    Collections.sort(keys);
+    for (var key : keys) {
+      var nums = firstDigitNumMap.get(key);
+      Collections.sort(nums);
+      result.addAll(nums);
     }
     return result;
+  }
+
+  public int getFirstDigit(int num) {
+    while (num >= 10) {
+      num /= 10;
+    }
+    return num;
   }
 }
