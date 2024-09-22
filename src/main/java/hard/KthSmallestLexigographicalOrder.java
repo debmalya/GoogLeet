@@ -1,36 +1,28 @@
 package hard;
 
-import java.util.*;
-
 public class KthSmallestLexigographicalOrder {
+  private int getReqNum(long a, long b, long n) {
+    int gap = 0;
+    while (a <= n) {
+      gap += Math.min(n + 1, b) - a;
+      a *= 10;
+      b *= 10;
+    }
+    return gap;
+  }
+
   public int findKthNumber(int n, int k) {
-    var result = lexicalOrder(n);
-    return result.get(k - 1);
-  }
-
-  private List<Integer> lexicalOrder(int n) {
-    List<Integer> result = new ArrayList<>();
-    Map<Integer, List<Integer>> firstDigitNumMap = new HashMap<>();
-    for (var num = 1; num <= n; num++) {
-      var firstDigit = getFirstDigit(num);
-      var listOfNums = firstDigitNumMap.getOrDefault(firstDigit, new ArrayList<>());
-      listOfNums.add(num);
-      firstDigitNumMap.put(firstDigit, listOfNums);
+    long num = 1;
+    for (int i = 1; i < k; ) {
+      int req = getReqNum(num, num + 1, n);
+      if (i + req <= k) {
+        i += req;
+        num++;
+      } else {
+        i++;
+        num *= 10;
+      }
     }
-    var keys = new ArrayList<>(firstDigitNumMap.keySet());
-    Collections.sort(keys);
-    for (var key : keys) {
-      var nums = firstDigitNumMap.get(key);
-      Collections.sort(nums);
-      result.addAll(nums);
-    }
-    return result;
-  }
-
-  public int getFirstDigit(int num) {
-    while (num >= 10) {
-      num /= 10;
-    }
-    return num;
+    return (int) num;
   }
 }
